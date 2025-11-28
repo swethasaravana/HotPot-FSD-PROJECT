@@ -1,0 +1,6 @@
+@HotPotAPI_HostAddress = http://localhost:5128
+
+GET {{HotPotAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
