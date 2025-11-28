@@ -1,0 +1,486 @@
+/* Base Styles & Variables */
+:root {
+  --primary: #fc8019; /* Swiggy orange */
+  --secondary: #f8cb45; /* Swiggy yellow */
+  --dark: #282c3f; /* Dark navy */
+  --light: #ffffff;
+  --accent: #60b246; /* Swiggy green */
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* Container & Layout */
+.hotbyte-container {
+  min-height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+.hotbyte-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(40, 44, 63, 0.9) 0%, rgba(40, 44, 63, 0.8) 100%);
+  z-index: 0;
+}
+
+/* Header Styles - Swiggy Inspired */
+.hotbyte-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  position: relative;
+  z-index: 100;
+  background: rgba(40, 44, 63, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  height: 150px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  filter: brightness(1.1);
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 8px rgba(252, 128, 25, 0.4));
+}
+
+.hotbyte-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 128, 25, 0.3);
+}
+
+.nav-link::before {
+  content: '→';
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+/* Main Content */
+.hotbyte-main {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+  padding: 2rem 5% 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Hero Section - Food Delivery Style */
+.hero-section {
+  max-width: 10000px;
+  margin: 2rem auto 4rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(252, 128, 25, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+
+.hero-description {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(252, 128, 25, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(252, 128, 25, 0.4);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.cta-button::after {
+  content: '🚀';
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover::after {
+  transform: translateX(5px);
+}
+
+/* Features Section - Card Grid */
+.features-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.features-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--light);
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.features-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateY(20px);
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover::before {
+  width: 100%;
+  opacity: 0.1;
+}
+
+.feature-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.2s forwards; }
+.feature-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.4s forwards; }
+.feature-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.6s forwards; }
+.feature-card:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.8s forwards; }
+.feature-card:nth-child(5) { animation: fadeInUp 0.8s ease-out 1s forwards; }
+.feature-card:nth-child(6) { animation: fadeInUp 0.8s ease-out 1.2s forwards; }
+
+.feature-card:hover {
+  transform: translateY(-10px) !important;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--light);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-card h4::before {
+  content: '✓';
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+.feature-card p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Footer */
+.hotbyte-footer {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(40, 44, 63, 0.95);
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 10;
+  font-size: 0.9rem;
+}
+
+/* Floating Food Icons Animation */
+.floating-food {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.8;
+  z-index: 5;
+  animation: float 8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+/* Food Delivery Particles */
+.delivery-particle {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  animation: delivery-float linear infinite;
+}
+
+@keyframes delivery-float {
+  to { transform: translateY(-100vh) rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-description {
+    font-size: 1.1rem;
+  }
+  
+  .features-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hotbyte-header {
+    padding: 1rem 5%;
+  }
+  
+  .hero-section {
+    padding: 2rem;
+    margin: 1rem auto 3rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .features-title {
+    font-size: 1.8rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Add these food icons to your JSX (before closing </div>) */
+/* {['🍕', '🍔', '🍟', '🌮', '🍣', '🍦', '🍩'].map((icon, i) => (
+  <div 
+    key={i}
+    className="floating-food"
+    style={{
+      left: `${Math.random() * 90 + 5}%`,
+      top: `${Math.random() * 80 + 10}%`,
+      animationDuration: `${Math.random() * 10 + 8}s`,
+      animationDelay: `${Math.random() * 5}s`,
+      fontSize: `${Math.random() * 2 + 1.5}rem`,
+      transform: `rotate(${Math.random() * 360}deg)`
+    }}
+  >
+    {icon}
+  </div>
+))} */
+
+/* Add these delivery particles to your JSX */
+/* {[...Array(10)].map((_, i) => (
+  <div 
+    key={i}
+    className="delivery-particle"
+    style={{
+      width: `${Math.random() * 40 + 20}px`,
+      height: `${Math.random() * 40 + 20}px`,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      backgroundImage: `url('https://cdn-icons-png.flaticon.com/512/869/869869.png')`,
+      animationDuration: `${Math.random() * 20 + 10}s`,
+      animationDelay: `${Math.random() * 5}s`,
+      opacity: Math.random() * 0.5 + 0.2
+    }}
+  />
+))} */

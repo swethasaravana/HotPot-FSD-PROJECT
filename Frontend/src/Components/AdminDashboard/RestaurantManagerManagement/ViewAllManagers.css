@@ -1,0 +1,618 @@
+/* ViewAllManagers.css - Ultra Premium Restaurant Managers Dashboard */
+
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --secondary: #3a0ca3;
+  --accent: #f72585;
+  --success: #4cc9f0;
+  --warning: #f8961e;
+  --danger: #ef233c;
+  --light: #f8f9fa;
+  --dark: #1a1a2e;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+  
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-inset: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+  
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+  --gradient-accent: linear-gradient(135deg, var(--secondary), var(--accent));
+  --gradient-rainbow: linear-gradient(90deg, 
+    #4361ee, #3a0ca3, #7209b7, #b5179e, #f72585);
+}
+
+/* Main Container - Glassmorphism Effect */
+.viewRM-managers-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 24px;
+  box-shadow: 
+    var(--shadow-lg),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.8s var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-slow);
+}
+
+.viewRM-managers-container:hover {
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.viewRM-managers-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--gradient-rainbow);
+  background-size: 400% 100%;
+  animation: gradientBG 15s ease infinite;
+  z-index: 1;
+}
+
+.viewRM-managers-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 20% 80%,
+    rgba(67, 97, 238, 0.08) 0%,
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header with Floating Animation */
+.viewRM-managers-container h2 {
+  text-align: center;
+  color: var(--dark);
+  margin-bottom: 3rem;
+  font-size: 2.8rem;
+  font-weight: 800;
+  position: relative;
+  padding-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  animation: floatTitle 6s ease-in-out infinite;
+}
+
+@keyframes floatTitle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
+/* Error and Loading Messages */
+.viewRM-error-message {
+  background: rgba(239, 35, 60, 0.15);
+  color: var(--danger);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(239, 35, 60, 0.3);
+  animation: shake 0.5s ease;
+}
+
+.viewRM-loading-indicator {
+  background: rgba(76, 201, 240, 0.15);
+  color: var(--success);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(76, 201, 240, 0.3);
+  text-align: center;
+  font-weight: 500;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* Table Styling - Card-like Design */
+.viewRM-managers-table-wrapper {
+  overflow-x: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.viewRM-managers-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  background: transparent;
+  animation: slideUp 0.6s var(--transition-slow);
+}
+
+.viewRM-managers-table thead {
+  position: relative;
+  z-index: 2;
+}
+
+.viewRM-managers-table thead tr {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 6px 18px rgba(67, 97, 238, 0.2);
+  border-radius: 14px;
+}
+
+.viewRM-managers-table th {
+  padding: 1.5rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.8px;
+  position: relative;
+}
+
+.viewRM-managers-table th:first-child {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  padding-left: 2rem;
+}
+
+.viewRM-managers-table th:last-child {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  padding-right: 2rem;
+}
+
+.viewRM-managers-table tbody tr {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.viewRM-managers-table tbody tr::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: var(--transition-slow);
+}
+
+.viewRM-managers-table tbody tr:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.viewRM-managers-table tbody tr:hover::before {
+  width: 8px;
+}
+
+.viewRM-managers-table td {
+  padding: 1.5rem;
+  color: var(--dark);
+  transition: var(--transition);
+  position: relative;
+  z-index: 1;
+}
+
+.viewRM-managers-table td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding-left: 2rem;
+}
+
+.viewRM-managers-table td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding-right: 2rem;
+}
+
+/* Action Buttons - Modern Style */
+.viewRM-edit-btn {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.8rem;
+}
+
+.viewRM-edit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.viewRM-edit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+}
+
+.viewRM-edit-btn:hover::before {
+  left: 100%;
+}
+
+.viewRM-delete-btn {
+  background: white;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ViewDP-partner-table tbody tr:hover::before {
+  width: 8px;
+}
+
+.viewRM-delete-btn:hover {
+  background: var(--danger);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(239, 35, 60, 0.2);
+}
+
+/* Empty State */
+.viewRM-managers-table td[colspan] {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gray);
+  font-size: 1.1rem;
+  background: rgba(248, 249, 250, 0.5);
+  border-radius: 12px;
+}
+
+/* Modal - Premium Glass Effect */
+.viewRM-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(8px);
+}
+
+.viewRM-modal-content {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3rem;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 
+    var(--shadow-lg),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: modalSlideUp 0.4s var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+}
+
+.viewRM-modal-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--gradient-accent);
+  animation: gradientBG 15s ease infinite;
+}
+
+.viewRM-modal-content h3 {
+  color: var(--dark);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.viewRM-modal-content h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* Form Inputs - Modern Style */
+.viewRM-form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.viewRM-form-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.viewRM-form-group input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-inset);
+  color: black;
+}
+
+.viewRM-form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 
+    0 0 0 3px rgba(67, 97, 238, 0.15),
+    var(--shadow-inset);
+  background: white;
+}
+
+.viewRM-form-group input:disabled {
+  background: var(--light-gray);
+  color: var(--gray);
+}
+
+/* Modal Buttons */
+.viewRM-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.viewRM-modal-actions button:first-child {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  box-shadow: 0 4px 15px rgba(67, 97, 238, 0.25);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.viewRM-modal-actions button:first-child:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(67, 97, 238, 0.35);
+}
+
+.viewRM-modal-actions button:first-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.6s;
+}
+
+.viewRM-modal-actions button:first-child:hover::before {
+  left: 100%;
+}
+
+.viewRM-modal-actions button:last-child {
+  background: white;
+  color: var(--gray);
+  border: 1px solid var(--light-gray);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.viewRM-modal-actions button:last-child:hover {
+  background: var(--light-gray);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .viewRM-managers-container {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .viewRM-managers-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .viewRM-managers-table thead tr {
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .viewRM-managers-container {
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 20px;
+  }
+  
+  .viewRM-managers-container h2 {
+    font-size: 2.2rem;
+  }
+  
+  .viewRM-managers-table th,
+  .viewRM-managers-table td {
+    padding: 1.2rem;
+  }
+  
+  .viewRM-edit-btn,
+  .viewRM-delete-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .viewRM-modal-content {
+    padding: 2.5rem 2rem;
+    margin: 0 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .viewRM-managers-container {
+    padding: 1.5rem;
+  }
+  
+  .viewRM-managers-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .viewRM-modal-actions {
+    flex-direction: column;
+  }
+  
+  .viewRM-modal-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Micro-interactions */
+.viewRM-managers-table tbody tr {
+  animation: fadeInRow 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInRow {
+  to { opacity: 1; }
+}
+
+/* Add delay for each row */
+.viewRM-managers-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.viewRM-managers-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.viewRM-managers-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.viewRM-managers-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+
+/* Hover effect for table cells */
+.viewRM-managers-table td {
+  position: relative;
+}
+
+.viewRM-managers-table td::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition);
+}
+
+.viewRM-managers-table td:hover::after {
+  width: calc(100% - 3rem);
+  left: 1.5rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(67, 97, 238, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
