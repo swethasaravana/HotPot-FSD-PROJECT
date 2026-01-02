@@ -261,7 +261,7 @@ const ViewMenuItems = () => {
                     <span>{item.cookingTime || 'N/A'}</span>
                   </div>
                   <div className="RMD-detail-item">
-                    <MdAccessTime />
+                    <MdSearch />
                     <span>{item.tasteInfo || 'N/A'}</span>
                   </div>
                   <div className="RMD-detail-item">

@@ -29,7 +29,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:28827/api/Admin/stats"); 
+        const response = await axios.get("http://localhost:5128/api/Admin/stats"); 
         setStats({
           customers: response.data.totalCustomers,
           restaurants: response.data.totalRestaurants,
