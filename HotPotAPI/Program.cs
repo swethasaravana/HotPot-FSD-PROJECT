@@ -57,7 +57,8 @@ namespace HotPotAPI
                 options.AddPolicy("AllowAll",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:5173")
+                        builder.WithOrigins("http://localhost:5173","https://hotpot-project.vercel.app",
+                                "https://hotpot-project-6g8jksmti-swethass-projects.vercel.app")
                                .AllowAnyMethod()
                                .AllowAnyHeader();
                     });
