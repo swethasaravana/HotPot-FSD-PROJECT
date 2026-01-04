@@ -52,16 +52,16 @@ namespace HotPotAPI
             builder.Services.AddHttpContextAccessor();
 
             #region CORS
+                
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:5173","https://hotpot-project.vercel.app",
-                                "https://hotpot-project-6g8jksmti-swethass-projects.vercel.app")
-                               .AllowAnyMethod()
-                               .AllowAnyHeader();
-                    });
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
             });
             #endregion
 
